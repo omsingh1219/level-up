@@ -8,7 +8,13 @@ import http from 'http';
 dotenv.config();
 
 const app = express();
-app.use(cors());
+// Open CORS completely for web browser application traffic in production
+app.use(cors({
+  origin: '*', 
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type']
+}));
+
 app.use(express.json());
 
 // Initialize the Gemini client wrapper using your secure server variable
