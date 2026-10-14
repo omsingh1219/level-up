@@ -37,7 +37,8 @@ app.post('/api/chat', async (req, res) => {
   }
 });
 
-const PORT = 5000;
+// Dynamically pick up the platform's production port layout or fallback to 5000
+const PORT = process.env.PORT || 5000;
 
 // Create an explicit HTTP server instance to override connection timeouts
 const server = http.createServer(app);
@@ -47,4 +48,7 @@ server.timeout = 300000;
 server.headersTimeout = 300000; 
 server.requestTimeout = 300000;
 
-server.listen(PORT, () => console.log(`Secure backend running on http://localhost:${PORT}`));
+// Bind explicitly to 0.0.0.0 so the cloud platform can route requests to your application
+server.listen(PORT, '0.0.0.0', () => {
+  console.log(`Secure backend running live on port ${PORT}`);
+});

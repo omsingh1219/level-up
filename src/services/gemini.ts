@@ -3,7 +3,7 @@
 export async function askGeminiAI(userPrompt: string): Promise<string> {
   try {
     // This sends the user's prompt to your secure local server running on port 5000
-    const response = await fetch("http://localhost:5000/api/chat", {
+    const response = await fetch("https://railway.app", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
