@@ -1,8 +1,10 @@
 // src/services/gemini.ts
 
+// src/services/gemini.ts
+
 export async function askGeminiAI(userPrompt: string): Promise<string> {
   try {
-    // This sends the user's prompt to your secure local server running on port 5000
+    // UPDATED PIPELINE: Fetch data from the live internet backend endpoint
     const response = await fetch("https://railway.app", {
       method: "POST",
       headers: {
