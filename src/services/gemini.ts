@@ -3,7 +3,7 @@
 export async function askGeminiAI(userPrompt: string): Promise<string> {
   try {
     // FIX: Updating the pipeline route string to match your verified live URL
-    const response = await fetch("https://level-up-production-a4f7.up.railway.app/api/chat", {
+    const response = await fetch("https://level-up-production-5a76.up.railway.app/api/chat", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
