@@ -1,11 +1,9 @@
 // src/services/gemini.ts
 
-// src/services/gemini.ts
-
 export async function askGeminiAI(userPrompt: string): Promise<string> {
   try {
-    // UPDATED PIPELINE: Fetch data from the live internet backend endpoint
-    const response = await fetch("https://railway.app", {
+    // FIX: Updating the pipeline route string to match your verified live URL
+    const response = await fetch("https://level-up-production-a4f7.up.railway.app/api/chat", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

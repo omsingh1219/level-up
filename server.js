@@ -8,7 +8,6 @@ import http from 'http';
 dotenv.config();
 
 const app = express();
-
 // Open CORS completely for web browser application traffic in production
 app.use(cors({
   origin: '*', 
@@ -30,9 +29,9 @@ app.post('/api/chat', async (req, res) => {
 
     console.log("Sending prompt to Gemini:", prompt);
 
-    // Using the stable flagship low-latency model string
+    // Call the flagship, available production model
     const response = await ai.models.generateContent({
-      model: 'gemini-3.6-flash',
+      model: 'gemini-3.5-flash-lite',
       contents: prompt,
     });
 
@@ -55,7 +54,7 @@ server.timeout = 300000;
 server.headersTimeout = 300000; 
 server.requestTimeout = 300000;
 
-// Bind explicitly to 0.0.0.0 so Railway can route requests correctly
+// Bind explicitly to 0.0.0.0 so the cloud platform can route requests to your application
 server.listen(PORT, '0.0.0.0', () => {
   console.log(`Secure backend running live on port ${PORT}`);
 });
